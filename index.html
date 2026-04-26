@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Rusifikatsiya | Приложения для китайских авто</title>
+    <title>AutoRus | Русификация + Пульты</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -20,7 +20,6 @@
             line-height: 1.5;
         }
 
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -31,8 +30,9 @@
             padding: 1.5rem;
         }
 
-        /* ========== GLASSMORPHISM KARTOCHKALAR ========== */
-        .glass-card, nav, .service-card, .brand-card, .benefit-card, .testimonial-card, .before-card, .contact-form, footer {
+        /* ========== GLASSMORPHISM ========== */
+        .glass-card, nav, .service-card, .benefit-card, .testimonial-card, 
+        .before-card, .contact-form, footer, .remote-card {
             background: rgba(255, 255, 255, 0.35);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -42,7 +42,7 @@
             transition: all 0.35s ease;
         }
 
-        .glass-card:hover, .service-card:hover, .brand-card:hover {
+        .glass-card:hover, .service-card:hover, .remote-card:hover {
             transform: translateY(-6px);
             background: rgba(255, 255, 255, 0.45);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255,255,255,0.8);
@@ -139,19 +139,22 @@
             box-shadow: 0 15px 30px rgba(42,122,176,0.4);
         }
 
-        /* Section titles */
         .section-title {
             text-align: center;
             font-size: 2rem;
             margin: 3rem 0 2rem;
             font-weight: 700;
             color: #1a3a5a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         /* Services grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.8rem;
             margin: 2rem 0;
         }
@@ -170,22 +173,6 @@
         .service-card h3 {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
-        }
-
-        /* Brands */
-        .brands-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .brand-card {
-            padding: 0.8rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: 500;
-            text-align: center;
         }
 
         /* Benefits */
@@ -232,6 +219,66 @@
             font-weight: 600;
         }
 
+        /* Pult yozish - Remote gallery - chiroyli glass ikonkalar */
+        .remotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .remote-card {
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .remote-icon {
+            width: 100%;
+            height: 120px;
+            background: rgba(42, 122, 176, 0.15);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(42,122,176,0.2);
+        }
+
+        .remote-card:hover .remote-icon {
+            background: rgba(42, 122, 176, 0.25);
+            transform: scale(1.02);
+            border-color: rgba(42,122,176,0.4);
+        }
+
+        .remote-icon i {
+            font-size: 3.5rem;
+            color: #2a7ab0;
+        }
+
+        .remote-card h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1a4a7a;
+        }
+
+        /* Remote service highlight */
+        .remote-service {
+            background: rgba(42, 122, 176, 0.1);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid rgba(42,122,176,0.3);
+        }
+
+        .remote-service h3 {
+            font-size: 1.6rem;
+            color: #1a5a8a;
+            margin-bottom: 0.5rem;
+        }
+
         /* Testimonials */
         .testimonials-grid {
             display: grid;
@@ -267,7 +314,7 @@
             margin-bottom: 1.2rem;
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 1rem;
             border-radius: 1.5rem;
@@ -277,16 +324,16 @@
             font-size: 1rem;
             outline: none;
             transition: 0.2s;
+            font-family: inherit;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-color: #2a7ab0;
             background: rgba(255,255,255,0.7);
         }
 
         textarea {
             resize: vertical;
-            font-family: inherit;
         }
 
         .contact-form button {
@@ -318,13 +365,15 @@
             gap: 8px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .section-title { font-size: 1.6rem; }
             nav { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
             .container { padding: 1rem; }
+            .remotes-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+            .remote-icon i { font-size: 2.5rem; }
+            .remote-icon { height: 90px; }
         }
     </style>
 </head>
@@ -338,9 +387,8 @@
             </div>
             <div class="nav-links">
                 <a href="#services">Услуги</a>
-                <a href="#brands">Бренды</a>
                 <a href="#benefits">Преимущества</a>
-                <a href="#beforeafter">До/После</a>
+                <a href="#remotes">Пульты</a>
                 <a href="#testimonials">Отзывы</a>
                 <a href="#contact">Контакты</a>
             </div>
@@ -353,44 +401,30 @@
             <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Оставить заявку</a>
         </section>
 
-        <!-- Services -->
+        <!-- Services - Наши услуги (PULT YOZISH QO'SHILDI) -->
         <section id="services">
             <h2 class="section-title"><i class="fas fa-cogs"></i> Наши услуги</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card glass-card">
                     <i class="fas fa-language"></i>
                     <h3>Русификация</h3>
                     <p>Полный перевод меню, голосового управления и клавиатуры на русский язык</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card glass-card">
                     <i class="fas fa-app-store"></i>
                     <h3>Установка приложений</h3>
                     <p>YouTube, Telegram, 2GIS, Yandex Navigator, Spotify и любые Android приложения</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card glass-card">
                     <i class="fas fa-sync-alt"></i>
                     <h3>Обновление системы</h3>
                     <p>Актуальные прошивки, снятие региональных блокировок, оптимизация</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Brands -->
-        <section id="brands">
-            <h2 class="section-title"><i class="fas fa-car"></i> Поддерживаемые бренды</h2>
-            <div class="brands-grid">
-                <div class="brand-card">Zeekr</div>
-                <div class="brand-card">Li Auto</div>
-                <div class="brand-card">BYD</div>
-                <div class="brand-card">Changan</div>
-                <div class="brand-card">Great Wall</div>
-                <div class="brand-card">Haval</div>
-                <div class="brand-card">Chery</div>
-                <div class="brand-card">Nio</div>
-                <div class="brand-card">Xpeng</div>
-                <div class="brand-card">Leapmotor</div>
-                <div class="brand-card">Deepal</div>
-                <div class="brand-card">Geely</div>
+                <div class="service-card glass-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Запись пультов</h3>
+                    <p>Профессиональная запись автомобильных пультов, брелоков и ключей. Любые марки.</p>
+                </div>
             </div>
         </section>
 
@@ -398,22 +432,22 @@
         <section id="benefits">
             <h2 class="section-title"><i class="fas fa-star"></i> Почему выбирают нас</h2>
             <div class="benefits-grid">
-                <div class="benefit-card">
+                <div class="benefit-card glass-card">
                     <i class="fas fa-bolt"></i>
                     <h3>Быстро</h3>
                     <p>Русификация за 1-2 часа</p>
                 </div>
-                <div class="benefit-card">
+                <div class="benefit-card glass-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Безопасно</h3>
                     <p>Без потери гарантии и заводских настроек</p>
                 </div>
-                <div class="benefit-card">
+                <div class="benefit-card glass-card">
                     <i class="fas fa-certificate"></i>
                     <h3>Гарантия</h3>
                     <p>3 месяца на все работы</p>
                 </div>
-                <div class="benefit-card">
+                <div class="benefit-card glass-card">
                     <i class="fas fa-headset"></i>
                     <h3>Поддержка 24/7</h3>
                     <p>Помощь после установки</p>
@@ -438,6 +472,62 @@
                     <div class="lang-badge">РУССКИЙ</div>
                 </div>
             </div>
+        </section>
+
+        <!-- PULT YOZISH XIZMATI - chiroyli glass ikonkalar bilan -->
+        <section id="remotes">
+            <h2 class="section-title"><i class="fas fa-tv"></i> Пульты и ключи</h2>
+            <div class="remote-service glass-card">
+                <i class="fas fa-microchip" style="font-size: 2.5rem; color: #2a7ab0;"></i>
+                <h3>📟 Запись пультов и ключей</h3>
+                <p>Профессиональная запись автомобильных пультов, брелоков и ключей. Любые марки, быстро и качественно.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">✅ Совместимость со всеми китайскими авто ✅ Оригинальные чипы ✅ Гарантия</p>
+            </div>
+
+            <h3 style="text-align: center; margin: 1.5rem 0 1rem;">Примеры пультов (10 шт)</h3>
+            <div class="remotes-grid">
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-key"></i></div>
+                    <h4>Автоключ</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-car"></i></div>
+                    <h4>Брелок</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-microchip"></i></div>
+                    <h4>Чип ключ</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-tv"></i></div>
+                    <h4>Пульт ДУ</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Иммобилайзер</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-bluetooth"></i></div>
+                    <h4>Bluetoot ключ</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-wifi"></i></div>
+                    <h4>Smart ключ</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-lock"></i></div>
+                    <h4>Центральный замок</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Смарт-пульт</h4>
+                </div>
+                <div class="remote-card glass-card">
+                    <div class="remote-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h4>Транспондер</h4>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.8rem; opacity: 0.7;">⭐ На все пульты и ключи даём гарантию</p>
         </section>
 
         <!-- Testimonials -->
@@ -477,6 +567,15 @@
                         <input type="text" placeholder="Марка автомобиля">
                     </div>
                     <div class="form-group">
+                        <select>
+                            <option value="">Выберите услугу</option>
+                            <option>Русификация</option>
+                            <option>Установка приложений</option>
+                            <option>Запись пульта/ключа</option>
+                            <option>Обновление системы</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <textarea rows="3" placeholder="Комментарий"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
@@ -489,15 +588,14 @@
         <footer>
             <div class="footer-contacts">
                 <a href="tel:+998932918779"><i class="fas fa-phone"></i> +998 93 291 87 79</a>
-                <a href="https://t.me/yammrvmashinalarga" target="_blank"><i class="fab fa-telegram"></i> @yammrvmashinalarga</a>
+                <a href="https://t.me/yammrv" target="_blank"><i class="fab fa-telegram"></i> @yammrv</a>
                 <span><i class="fas fa-map-marker-alt"></i> Fergana, Uzbekistan</span>
             </div>
-            <p style="opacity: 0.7;">© 2025 AutoRus — Русификация и приложения для китайских автомобилей</p>
+            <p style="opacity: 0.7;">© 2026 AutoRus — Русификация, приложения и запись пультов для китайских автомобилей</p>
         </footer>
     </div>
 
     <script>
-        // Form submission alert
         const form = document.getElementById('callbackForm');
         if(form) {
             form.addEventListener('submit', function(e) {
@@ -507,7 +605,6 @@
             });
         }
 
-        // Smooth animation on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -517,7 +614,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.service-card, .brand-card, .benefit-card, .testimonial-card, .before-card').forEach(el => {
+        document.querySelectorAll('.service-card, .benefit-card, .testimonial-card, .before-card, .remote-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.5s ease';
