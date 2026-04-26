@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Rusifikatsiya | Приложения для китайских авто</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #e8f0fe 0%, #f5faff 40%, #ffffff 100%);
+            min-height: 100vh;
+            color: #1a2a4a;
+            line-height: 1.5;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* ========== GLASSMORPHISM KARTOCHKALAR ========== */
+        .glass-card, nav, .service-card, .brand-card, .benefit-card, .testimonial-card, .before-card, .contact-form, footer {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255,255,255,0.6);
+            transition: all 0.35s ease;
+        }
+
+        .glass-card:hover, .service-card:hover, .brand-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255,255,255,0.8);
+            border-color: rgba(255,255,255,0.7);
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #2a7ab0;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a3a5a;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2a7ab0;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a4a7a, #2a7ab0, #4aa5d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #2a4a6a;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2a7ab0, #1a5a8a);
+            color: white;
+            box-shadow: 0 8px 20px rgba(42,122,176,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(42,122,176,0.4);
+        }
+
+        /* Section titles */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            font-weight: 700;
+            color: #1a3a5a;
+        }
+
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .service-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #2a7ab0;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Brands */
+        .brands-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .brand-card {
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .benefit-card i {
+            font-size: 2rem;
+            color: #2a7ab0;
+            margin-bottom: 1rem;
+        }
+
+        /* Before/After */
+        .before-after {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .before-card {
+            flex: 1;
+            min-width: 260px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .before-card .lang-badge {
+            background: rgba(255,255,255,0.5);
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .testimonial-card {
+            padding: 1.8rem;
+        }
+
+        .testimonial-card i.fa-quote-left {
+            color: #2a7ab0;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .testimonial-card h4 {
+            margin-top: 1rem;
+            color: #1a4a7a;
+        }
+
+        /* Contact form */
+        .contact-form {
+            padding: 2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(8px);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #2a7ab0;
+            background: rgba(255,255,255,0.7);
+        }
+
+        textarea {
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 2rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contacts a {
+            color: #1a3a5a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+            nav { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <span>Auto<span style="color:#2a7ab0">Rus</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Услуги</a>
+                <a href="#brands">Бренды</a>
+                <a href="#benefits">Преимущества</a>
+                <a href="#beforeafter">До/После</a>
+                <a href="#testimonials">Отзывы</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </nav>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <h1>Русификация и установка приложений <br>для китайских автомобилей</h1>
+            <p>Быстро, безопасно, профессионально. Полная русификация мультимедиа, установка любых приложений и снятие региональных ограничений.</p>
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Оставить заявку</a>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Русификация</h3>
+                    <p>Полный перевод меню, голосового управления и клавиатуры на русский язык</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-app-store"></i>
+                    <h3>Установка приложений</h3>
+                    <p>YouTube, Telegram, 2GIS, Yandex Navigator, Spotify и любые Android приложения</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Обновление системы</h3>
+                    <p>Актуальные прошивки, снятие региональных блокировок, оптимизация</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands -->
+        <section id="brands">
+            <h2 class="section-title"><i class="fas fa-car"></i> Поддерживаемые бренды</h2>
+            <div class="brands-grid">
+                <div class="brand-card">Zeekr</div>
+                <div class="brand-card">Li Auto</div>
+                <div class="brand-card">BYD</div>
+                <div class="brand-card">Changan</div>
+                <div class="brand-card">Great Wall</div>
+                <div class="brand-card">Haval</div>
+                <div class="brand-card">Chery</div>
+                <div class="brand-card">Nio</div>
+                <div class="brand-card">Xpeng</div>
+                <div class="brand-card">Leapmotor</div>
+                <div class="brand-card">Deepal</div>
+                <div class="brand-card">Geely</div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section id="benefits">
+            <h2 class="section-title"><i class="fas fa-star"></i> Почему выбирают нас</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Быстро</h3>
+                    <p>Русификация за 1-2 часа</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Безопасно</h3>
+                    <p>Без потери гарантии и заводских настроек</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Гарантия</h3>
+                    <p>3 месяца на все работы</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Поддержка 24/7</h3>
+                    <p>Помощь после установки</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before / After -->
+        <section id="beforeafter">
+            <h2 class="section-title"><i class="fas fa-exchange-alt"></i> До и после русификации</h2>
+            <div class="before-after">
+                <div class="before-card glass-card">
+                    <i class="fas fa-language" style="font-size: 2rem;"></i>
+                    <h3>До</h3>
+                    <p>Китайский / английский интерфейс</p>
+                    <div class="lang-badge">中文 / EN</div>
+                </div>
+                <div class="before-card glass-card">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; color:#2a7ab0;"></i>
+                    <h3>После</h3>
+                    <p>Полностью русский интерфейс</p>
+                    <div class="lang-badge">РУССКИЙ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <h2 class="section-title"><i class="fas fa-comment-dots"></i> Отзывы клиентов</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Сделали русификацию на Zeekr 001 за час. Теперь всё на русском, Яндекс Навигатор работает отлично! Спасибо.</p>
+                    <h4>— Алексей, Москва</h4>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Установили приложения на BYD Han. YouTube и Telegram летают. Очень доволен сервисом!</p>
+                    <h4>— Дмитрий, СПб</h4>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Профессионально, быстро. Сняли региональные ограничения на Li Auto L9. Рекомендую.</p>
+                    <h4>— Екатерина, Казань</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Оставить заявку</h2>
+            <div class="contact-form glass-card">
+                <form id="callbackForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Марка автомобиля">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" placeholder="Комментарий"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">Или свяжитесь с нами напрямую</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-contacts">
+                <a href="tel:+998932918779"><i class="fas fa-phone"></i> +998 93 291 87 79</a>
+                <a href="https://t.me/yammrvmashinalarga" target="_blank"><i class="fab fa-telegram"></i> @yammrvmashinalarga</a>
+                <span><i class="fas fa-map-marker-alt"></i> Fergana, Uzbekistan</span>
+            </div>
+            <p style="opacity: 0.7;">© 2025 AutoRus — Русификация и приложения для китайских автомобилей</p>
+        </footer>
+    </div>
+
+    <script>
+        // Form submission alert
+        const form = document.getElementById('callbackForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
+                form.reset();
+            });
+        }
+
+        // Smooth animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card, .brand-card, .benefit-card, .testimonial-card, .before-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
